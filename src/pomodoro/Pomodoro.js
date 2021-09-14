@@ -4,9 +4,6 @@ import SessionDisplay from "../components/session-display"
 import TransportDisplay from "../components/transport-display";
 import DurationDisplay from "../components/duration-display";
 
-// These functions are defined outside of the component to insure they do not have access to state
-// and are, therefore more likely to be pure.
-
 /**
  * Update the session state with new state after each tick of the interval.
  * @param prevState
@@ -84,9 +81,10 @@ const Pomodoro = () => {
     isTimerRunning ? 1000 : null
   )
 
-  // Display pomodoro app
+  // Displays pomodoro app
   return (
     <div className="pomodoro">
+    {/*Displays duration settings and controls */}
       <DurationDisplay 
         session={session}
         focusDuration={focusDuration}
