@@ -28,6 +28,7 @@ const nextTick = (prevState) => {
  * @returns
  *  function to update the session state.
  */
+
 const nextSession = (focusDuration, breakDuration) => {
   /**
    * State function to transition the current session type to the next session. e.g. On Break -> Focusing or Focusing -> On Break
