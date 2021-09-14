@@ -186,7 +186,7 @@ const Pomodoro = () => {
                 Break Duration: {breakMinutes}
               </span>
               <div className="input-group-append">
-                {/* Decrease Break Duration */}
+                {/* Decrease break Duration */}
                 <button
                   type="button"
                   className="btn btn-secondary"
