@@ -5,7 +5,7 @@ import SessionTitle from "../session-title";
 
 const Session = ( { session, sessionMinutes } ) => {
 
-    // Get remaining time from session object, using old syntax to satisfy Qualified
+    // Get remaining time from session object, using old syntax to satisfy outdated bootcamp tests
     // Called to calculate elapsed time in seconds
     const remainingTime = session ? session.timeRemaining : null
 
