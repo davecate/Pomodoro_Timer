@@ -7,18 +7,8 @@ const BreakDuration = ( { session, breakDuration, setBreakDuration } ) => {
     const breakMinutes = minutesToDuration(breakDuration)
 
     // Changing break duration: called whenever Break Duration "+" or "-" is clicked, respectively
-    const increaseBreakDuration = () => {
-        switch (breakDuration) {
-        case 15: return
-        default: setBreakDuration(breakDuration + 1)
-        }
-    }
-    const decreaseBreakDuration = () => {
-        switch (breakDuration) {
-        case 1: return
-        default: setBreakDuration(breakDuration - 1)
-        }
-    }
+    const decreaseBreakDuration = () => setBreakDuration((duration) => Math.max(1, duration - 1))
+    const increaseBreakDuration = () => setBreakDuration((duration) => Math.min(15, duration + 1))
 
     // Display break duration setting & controls
     return (

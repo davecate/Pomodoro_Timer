@@ -7,18 +7,8 @@ const FocusDuration = ( { session, focusDuration, setFocusDuration } ) => {
     const focusMinutes = minutesToDuration(focusDuration)
 
     // Changing focus duration: called whenever Focus Duration "+" or "-" is clicked, respectively
-    const increaseFocusDuration = () => {
-        switch(focusDuration) {
-        case 60: return
-        default: setFocusDuration(focusDuration + 5)
-        }
-    }
-    const decreaseFocusDuration = () => {
-        switch(focusDuration) {
-        case 5: return
-        default: setFocusDuration(focusDuration - 5)
-        }
-    }
+    const decreaseFocusDuration = () => setFocusDuration((duration) => Math.max(5, duration - 5))
+    const increaseFocusDuration = () => setFocusDuration((duration) => Math.min(60, duration + 5))
 
     // Display focus duration setting & controls
     return (
