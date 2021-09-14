@@ -1,9 +1,10 @@
 import React from "react";
-import classNames from "../../../utils/class-names";
+import classNames from "../../../../utils/class-names";
 
 const TransportPlayPause = ( { setSession, isTimerRunning, setIsTimerRunning, focusDuration } ) => {
 
-    // Checks for active session. If no, starts new session & timer. If yes, pauses timer.
+    // Checks for active session,
+    // if no, starts new session & timer — if yes, pauses timer.
     const playPause = () => {
         setIsTimerRunning((prevState) => {
             const nextState = !prevState
@@ -22,21 +23,22 @@ const TransportPlayPause = ( { setSession, isTimerRunning, setIsTimerRunning, fo
         })
     }
 
-    // Display play/pause button. Switches icon based on state of isTimerRunning.
+    // Display play/pause button,
+    // switches icon based on state of isTimerRunning.
     return (
         <button
-        type="button"
-        className="btn btn-primary"
-        data-testid="play-pause"
-        title="Start or pause timer"
-        onClick={playPause}
+            type="button"
+            className="btn btn-primary"
+            data-testid="play-pause"
+            title="Start or pause timer"
+            onClick={playPause}
     >
         <span
-        className={classNames({
-            oi: true,
-            "oi-media-play": !isTimerRunning,
-            "oi-media-pause": isTimerRunning,
-        })}
+            className={classNames({
+                oi: true,
+                "oi-media-play": !isTimerRunning,
+                "oi-media-pause": isTimerRunning,
+            })}
         />
     </button>
     )

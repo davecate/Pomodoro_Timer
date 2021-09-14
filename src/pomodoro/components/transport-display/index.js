@@ -9,23 +9,23 @@ const TransportDisplay = ( { session, setSession, isTimerRunning, setIsTimerRunn
         <div className="row">
             <div className="col">
                 <div
-                className="btn-group btn-group-lg mb-2"
-                role="group"
-                aria-label="Timer controls"
+                    className="btn-group btn-group-lg mb-2"
+                    role="group"
+                    aria-label="Timer controls"
                 >
                 {/* Play/Pause button */}
                 <TransportPlayPause 
-                session={session}
-                setSession={setSession} 
-                isTimerRunning={isTimerRunning} 
-                setIsTimerRunning={setIsTimerRunning}
-                focusDuration={focusDuration}
+                    session={session}
+                    setSession={setSession} 
+                    isTimerRunning={isTimerRunning} 
+                    setIsTimerRunning={setIsTimerRunning}
+                    focusDuration={focusDuration}
                 />
                 {/* Stop button */}
                 <TransportStop
-                session={session}
-                setSession={setSession}
-                setIsTimerRunning={setIsTimerRunning}
+                    session={session}
+                    setSession={setSession}
+                    setIsTimerRunning={setIsTimerRunning}
                 />
                 </div>
             </div>

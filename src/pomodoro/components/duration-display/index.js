@@ -4,7 +4,7 @@ import FocusDuration from "./focus-duration";
 
 const DurationDisplay = ( { session, focusDuration, setFocusDuration, breakDuration, setBreakDuration } ) => {
 
-    // Display duration settings and controls
+    // Displays duration settings and controls
     return (
         <div className="row">
             <FocusDuration

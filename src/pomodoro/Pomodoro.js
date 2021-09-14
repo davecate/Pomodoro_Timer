@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import useInterval from "../utils/useInterval";
-import SessionDisplay from "../components/session-display"
-import TransportDisplay from "../components/transport-display";
-import DurationDisplay from "../components/duration-display";
-
-// These functions are defined outside of the component to insure they do not have access to state
-// and are, therefore more likely to be pure.
+import SessionDisplay from "./components/session-display"
+import TransportDisplay from "./components/transport-display";
+import DurationDisplay from "./components/duration-display";
 
 /**
  * Update the session state with new state after each tick of the interval.
@@ -15,7 +12,7 @@ import DurationDisplay from "../components/duration-display";
  *  new session state with timing information updated.
  */
 const nextTick = (prevState) => {
-  const timeRemaining = Math.max(0, prevState.timeRemaining - 1);
+  const timeRemaining = Math.max(0, prevState.timeRemaining - 1)
   return {
     ...prevState,
     timeRemaining,
@@ -31,6 +28,7 @@ const nextTick = (prevState) => {
  * @returns
  *  function to update the session state.
  */
+
 const nextSession = (focusDuration, breakDuration) => {
   /**
    * State function to transition the current session type to the next session. e.g. On Break -> Focusing or Focusing -> On Break
@@ -40,7 +38,7 @@ const nextSession = (focusDuration, breakDuration) => {
       return {
         label: "On Break",
         timeRemaining: breakDuration * 60,
-      };
+      }
     }
     return {
       label: "Focusing",
@@ -59,16 +57,6 @@ const Pomodoro = () => {
   const [focusDuration, setFocusDuration] = useState(25)
   const [breakDuration, setBreakDuration] = useState(5)
 
-  // Combine focus and break durations into a single variable, returning the appropriate value based on the session label
-  // Called in all session-display components
-  const sessionMinutes = () => {
-    switch (session?.label) {
-      case "Focusing": {return focusDuration}
-      case "On Break": {return breakDuration}
-      default: {return focusDuration}
-    }
-  }
-
   /**
    * Custom hook that invokes the callback function every second
    *
@@ -79,14 +67,15 @@ const Pomodoro = () => {
         new Audio("https://bigsoundbank.com/UPLOAD/mp3/1831.mp3").play()
         return setSession(nextSession(focusDuration, breakDuration))
       }
-      return setSession(nextTick);
+      return setSession(nextTick)
     },
     isTimerRunning ? 1000 : null
   )
 
-  // Display pomodoro app
+  // Displays pomodoro app
   return (
     <div className="pomodoro">
+      {/* Displays duration settings and controls (+ or -) */}
       <DurationDisplay 
         session={session}
         focusDuration={focusDuration}
@@ -102,10 +91,11 @@ const Pomodoro = () => {
         setIsTimerRunning={setIsTimerRunning}
         focusDuration={focusDuration}
       />
-      {/* Displays session component & its children: session title, countdown, & progress bar */}
+      {/* Displays real-time session info: session type, length, countdown, & progress bar */}
       <SessionDisplay 
         session={session} 
-        sessionMinutes={sessionMinutes} 
+        focusDuration={focusDuration}
+        breakDuration={breakDuration}
       />
     </div>
   )
