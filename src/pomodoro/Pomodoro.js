@@ -186,7 +186,7 @@ const Pomodoro = () => {
                 Break Duration: {breakMinutes}
               </span>
               <div className="input-group-append">
-                {/* Decrease break Duration */}
+                {/* Decrease break duration */}
                 <button
                   type="button"
                   className="btn btn-secondary"
@@ -218,7 +218,7 @@ const Pomodoro = () => {
             role="group"
             aria-label="Timer controls"
           >
-            {/* Play/Pause Button */}
+            {/* Play/Pause button */}
             <button
               type="button"
               className="btn btn-primary"
@@ -234,7 +234,7 @@ const Pomodoro = () => {
                 })}
               />
             </button>
-            {/* Stop Button */}
+            {/* Stop button */}
             <button
               type="button"
               className="btn btn-secondary"
