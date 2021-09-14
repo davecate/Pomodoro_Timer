@@ -11,7 +11,6 @@ const ProgressBar = ( { sessionMinutes, remainingTime } ) => {
     // Convert sessionMinutes to seconds: called to calculate elapsed time in seconds
     const totalTime = minutesToSeconds(sessionMinutes())
 
-
     // Get elapsed time: called to calculate elapsed time as a percentage of total session length
     const elapsedTime = totalTime - remainingTime
 
