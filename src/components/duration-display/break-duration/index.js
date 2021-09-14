@@ -3,7 +3,7 @@ import { minutesToDuration } from "../../../utils/duration";
 
 const BreakDuration = ( { session, breakDuration, setBreakDuration } ) => {
 
-    // onvert duration in minutes to a mm:ss display format: called to display current settings alongside adjustment buttons
+    // Convert duration in minutes to a mm:ss display format: called to display current settings alongside adjustment buttons
     const breakMinutes = minutesToDuration(breakDuration)
 
     // Changing break duration: called whenever Break Duration "+" or "-" is clicked, respectively
