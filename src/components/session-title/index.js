@@ -6,7 +6,7 @@ const SessionTitle = ( { session, sessionMinutes} ) => {
 // Convert sessionMinutes to mm:ss display: called in to display total session length in the session title
 const titleTime = minutesToDuration(sessionMinutes())
 
-// Get session label using old syntax in order to satisfy Qualified
+// Get session label using old syntax to satisfy outdated bootcamp tests
 const sessionLabel = session ? session.label : null
 
 // Display session title with label and total length
