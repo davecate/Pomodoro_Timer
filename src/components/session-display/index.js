@@ -1,9 +1,9 @@
 import React from "react";
-import Countdown from "../countdown";
-import ProgressBar from "../progress-bar";
+import Countdown from "../session-countdown";
+import ProgressBar from "../session-progress-bar";
 import SessionTitle from "../session-title";
 
-const Session = ( { session, sessionMinutes } ) => {
+const SessionDisplay = ( { session, sessionMinutes } ) => {
 
     // Get remaining time from session object, using old syntax to satisfy outdated bootcamp tests
     // Called to calculate elapsed time in seconds
@@ -34,4 +34,4 @@ const Session = ( { session, sessionMinutes } ) => {
 
 }
 
-export default Session
+export default SessionDisplay
