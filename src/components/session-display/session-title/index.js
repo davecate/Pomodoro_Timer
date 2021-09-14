@@ -1,5 +1,5 @@
 import React from "react";
-import { minutesToDuration } from "../../utils/duration";
+import { minutesToDuration } from "../../../utils/duration";
 
 const SessionTitle = ( { session, sessionMinutes} ) => {
 

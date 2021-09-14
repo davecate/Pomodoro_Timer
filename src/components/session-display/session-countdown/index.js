@@ -1,5 +1,5 @@
 import React from "react";
-import { secondsToDuration } from "../../utils/duration";
+import { secondsToDuration } from "../../../utils/duration";
 
 const Countdown = ( { remainingTime } ) => {
 

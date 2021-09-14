@@ -1,6 +1,6 @@
 import React from "react";
-import TransportPlayPause from "../transport-play-pause";
-import TransportStop from "../transport-stop";
+import TransportPlayPause from "./transport-play-pause";
+import TransportStop from "./transport-stop";
 
 const TransportDisplay = ( { session, setSession, isTimerRunning, setIsTimerRunning, focusDuration } ) => {
 

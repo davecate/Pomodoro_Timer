@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import useInterval from "../utils/useInterval";
-import { minutesToDuration } from "../utils/duration"
 import SessionDisplay from "../components/session-display"
 import TransportDisplay from "../components/transport-display";
+import DurationDisplay from "../components/duration-display";
 
 // These functions are defined outside of the component to insure they do not have access to state
 // and are, therefore more likely to be pure.
@@ -60,7 +60,7 @@ const Pomodoro = () => {
   const [breakDuration, setBreakDuration] = useState(5)
 
   // Combine focus and break durations into a single variable, returning the appropriate value based on the session label
-  // Called in all "session" components
+  // Called in all session-display components
   const sessionMinutes = () => {
     switch (session?.label) {
       case "Focusing": {return focusDuration}
@@ -68,38 +68,6 @@ const Pomodoro = () => {
       default: {return focusDuration}
     }
   }
-
-  // Changing focus duration: called whenever Focus Duration "+" or "-" is clicked, respectively
-  const increaseFocusDuration = () => {
-    switch(focusDuration) {
-      case 60: return
-      default: setFocusDuration(focusDuration + 5)
-    }
-  }
-  const decreaseFocusDuration = () => {
-    switch(focusDuration) {
-      case 5: return
-      default: setFocusDuration(focusDuration - 5)
-    }
-  }
-
-  // Changing break duration: called whenever Break Duration "+" or "-" is clicked, respectively
-  const increaseBreakDuration = () => {
-    switch (breakDuration) {
-      case 15: return
-      default: setBreakDuration(breakDuration + 1)
-    }
-  }
-  const decreaseBreakDuration = () => {
-    switch (breakDuration) {
-      case 1: return
-      default: setBreakDuration(breakDuration - 1)
-    }
-  }
-
-  // Convert duration in minutes to a mm:ss display format: called to display current settings alongside adjustment buttons
-  const focusMinutes = minutesToDuration(focusDuration)
-  const breakMinutes = minutesToDuration(breakDuration)
 
   /**
    * Custom hook that invokes the callback function every second
@@ -116,86 +84,29 @@ const Pomodoro = () => {
     isTimerRunning ? 1000 : null
   )
 
-  
-
-  
-
+  // Display pomodoro app
   return (
     <div className="pomodoro">
-      <div className="row">
-        <div className="col">
-          {/* Focus Duration: displays current setting, with buttons to increase or decrease */}
-          <div className="input-group input-group-lg mb-2">
-            <span className="input-group-text" data-testid="duration-focus">
-              Focus Duration: {focusMinutes}
-            </span>
-            <div className="input-group-append">
-              {/* Decrease focus duration */}
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-testid="decrease-focus"
-                onClick={decreaseFocusDuration}
-                disabled={session}
-              >
-                <span className="oi oi-minus" />
-              </button>
-              {/* Increase focus duration */}
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-testid="increase-focus"
-                onClick={increaseFocusDuration}
-                disabled={session}
-              >
-                <span className="oi oi-plus" />
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="float-right">
-          {/* Break Duration: displays current setting, with buttons to increase or decrease */}
-            <div className="input-group input-group-lg mb-2">
-              <span className="input-group-text" data-testid="duration-break">
-                Break Duration: {breakMinutes}
-              </span>
-              <div className="input-group-append">
-                {/* Decrease break duration */}
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-testid="decrease-break"
-                  onClick={decreaseBreakDuration}
-                  disabled={session}
-                >
-                  <span className="oi oi-minus" />
-                </button>
-                {/* Increase break duration */}
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  data-testid="increase-break"
-                  onClick={increaseBreakDuration}
-                  disabled={session}
-                >
-                  <span className="oi oi-plus" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <DurationDisplay 
+        session={session}
+        focusDuration={focusDuration}
+        setFocusDuration={setFocusDuration}
+        breakDuration={breakDuration}
+        setBreakDuration={setBreakDuration}
+      />
       {/* Displays session transport: play/pause, stop */}
       <TransportDisplay 
-      session={session}
-      setSession={setSession}
-      isTimerRunning={isTimerRunning}
-      setIsTimerRunning={setIsTimerRunning}
-      focusDuration={focusDuration}
+        session={session}
+        setSession={setSession}
+        isTimerRunning={isTimerRunning}
+        setIsTimerRunning={setIsTimerRunning}
+        focusDuration={focusDuration}
       />
       {/* Displays session component & its children: session title, countdown, & progress bar */}
-      <SessionDisplay session={session} sessionMinutes={sessionMinutes} />
+      <SessionDisplay 
+        session={session} 
+        sessionMinutes={sessionMinutes} 
+      />
     </div>
   )
 }

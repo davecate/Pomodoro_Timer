@@ -1,7 +1,7 @@
 import React from "react";
-import Countdown from "../session-countdown";
-import ProgressBar from "../session-progress-bar";
-import SessionTitle from "../session-title";
+import Countdown from "./session-countdown";
+import ProgressBar from "./session-progress-bar";
+import SessionTitle from "./session-title";
 
 const SessionDisplay = ( { session, sessionMinutes } ) => {
 

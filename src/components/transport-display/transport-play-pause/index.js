@@ -1,9 +1,9 @@
 import React from "react";
-import classNames from "../../utils/class-names";
+import classNames from "../../../utils/class-names";
 
 const TransportPlayPause = ( { setSession, isTimerRunning, setIsTimerRunning, focusDuration } ) => {
 
-    // Checks for active session. If no, starts new session. If yes, pauses current session.
+    // Checks for active session. If no, starts new session & timer. If yes, pauses timer.
     const playPause = () => {
         setIsTimerRunning((prevState) => {
             const nextState = !prevState
@@ -22,6 +22,7 @@ const TransportPlayPause = ( { setSession, isTimerRunning, setIsTimerRunning, fo
         })
     }
 
+    // Display play/pause button. Switches icon based on state of isTimerRunning.
     return (
         <button
         type="button"
